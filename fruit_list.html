@@ -19,8 +19,40 @@
     </style>
 
     <script>
+
+        // Create an array to store the data
+        var fruit = [];
+
+        // define the function for onclick event
         function save_fruit(){
-            
+
+            var fruit_name = document.getElementById("fruit-name").value;
+            var fruit_rate = document.getElementById("rate").value;
+            var fruit_quantity = document.getElementById("quantity").value;
+
+            var temp = {
+                fName : fruit_name,
+                fRate : fruit_rate,
+                fQuantity : fruit_quantity
+            }
+
+            // push temp into fruit list
+            fruit.push(temp);
+
+        }
+
+        // Define function for fetch button
+        function fetch_fruit(){
+
+            var html = "";
+
+            for(var i=0; i < fruit.length; i++)
+            {
+                html += "<tr><td>" + fruit[i].fName + "</td><td>" + fruit[i].fRate + "</td><td>" + fruit[i].fQuantity + "</td></tr>";
+            }
+
+            document.getElementById("table-data").innerHTML = html;
+
         }
     </script>
 </head>
@@ -42,7 +74,13 @@
                     <button class="btn btn-primary" onclick="save_fruit()">Save</button>
                 </div>
             </div>
-            <div class="col-4">
+
+            <div class="col-4 shadow">
+                <!-- Create a button for fetching the data -->
+                <div class="mb-1" style="text-align: center;">
+                    <button class="btn btn-primary" onclick="fetch_fruit()">Fetch Fruit</button>
+                </div>
+
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
