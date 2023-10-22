@@ -14,8 +14,16 @@
 
     <style>
         body{
-            background-color: coral;
+            background-color: indianred;
         }
+
+        #my-block-1{
+            background-color: darksalmon;
+        }
+        #my-block-2{
+            background-color: darksalmon;
+        }
+
     </style>
 
     <script>
@@ -38,7 +46,14 @@
 
             // push temp into fruit list
             fruit.push(temp);
+            reset();
+        }
 
+        function reset()
+        {
+            document.getElementById("fruit-name").value = "";
+            document.getElementById("rate").value = "";
+            document.getElementById("quantity").value = ""; 
         }
 
         // Define function for fetch button
@@ -59,7 +74,7 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-around align-items-center" style="height:98vh">
-            <div class="col-4 p-4 shadow">
+            <div class="col-3 p-4 shadow" id="my-block-1">
 
                 <div class="mb-3">
                     <input type="text"  id="fruit-name" class="form-control" placeholder="Fruit Name">
@@ -75,9 +90,9 @@
                 </div>
             </div>
 
-            <div class="col-4 shadow">
+            <div class="col-4 p-3 shadow" id="my-block-2">
                 <!-- Create a button for fetching the data -->
-                <div class="mb-1" style="text-align: center;">
+                <div class="mb-3" style="text-align: center;">
                     <button class="btn btn-primary" onclick="fetch_fruit()">Fetch Fruit</button>
                 </div>
 
