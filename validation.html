@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Validation Document</title>
+    <script>
+        var users = [];
+
+        function validate_username()
+        {
+            var username = document.getElementById("user_name").value;
+            // The length of username must be greater than or equal to 3
+            if(username.length < 3){
+                document.getElementById("username_msg").innerHTML = "Username must be greater than or equal to 3!";
+                return false;
+            }
+            else{
+                document.getElementById("username_msg").innerHTML = "";
+                return username;
+            }
+
+        }
+
+        function validate_email()
+        {
+            // emails must end with @cdac.com
+            var email = document.getElementById("email").value;
+            if(!email.endsWith("@cdac.com")){
+                document.getElementById("email_msg").innerHTML = "Use CDAC Official Email IDs";
+                return false;
+            }
+            else{
+                document.getElementById("email_msg").innerHTML = "";
+                return email;
+            }
+        }
+
+        function validate_age()
+        {
+            // Age must be between 18 and 75
+            var age  = document.getElementById("age").value;
+            if(age < 18 && age > 75){
+                document.getElementById("age_msg").innerHTML = "Invalid Age: Age must be 18 or above and below or equal to 75";
+                return false;
+            }
+            else{
+                document.getElementById("age_msg").innerHTML = "";
+                return age;
+            }
+        }
+
+        function save_user()
+        {
+            var _username = validate_username();
+            var _email = validate_email();
+            var _age = validate_age();
+
+            if(_username && _email && _age){
+                users.push({
+                username :  _username,
+                email    :  _email ,
+                age      :  _age
+            })
+            }
+        }
+
+    </script>
 </head>
 <body>
-    <input type="text" id="user_name" placeholder="Enter your Name">
+    <input type="text" id="user_name" onblur="validate_username()"  placeholder="Enter Username">
+    <span id="username_msg"></span>
+    <br>
+    <input type="email" id="email" onblur="validate_email()" placeholder="Enter Email">
+    <span id="email_msg"></span>
+    <br>
+    <input type="number" id="age" onblur="validate_age()" placeholder="Enter your Age">
+    <span id="age_msg"></span>
+    <br>
+    <button onclick="save_user()">Save</button>
 </body>
 </html>
