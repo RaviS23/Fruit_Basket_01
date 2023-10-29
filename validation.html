@@ -38,8 +38,9 @@
         {
             // Age must be between 18 and 75
             var age  = document.getElementById("age").value;
-            if(age < 18 && age > 75){
-                document.getElementById("age_msg").innerHTML = "Invalid Age: Age must be 18 or above and below or equal to 75";
+            if(age < 18 || age > 75){
+                document.getElementById("age_msg").innerHTML = 
+                            "Invalid Age: Age must be 18 or above and below or equal to 75";
                 return false;
             }
             else{
